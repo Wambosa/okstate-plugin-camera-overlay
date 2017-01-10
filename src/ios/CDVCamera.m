@@ -785,7 +785,6 @@ static NSString* toBase64(NSData* data) {
             [self addOverlayImageView];
             [self addCameraButton];
             [self addCancelButton];
-            [self addSlider];
         });
 
     }
@@ -832,7 +831,7 @@ static NSString* toBase64(NSData* data) {
 }
 
 - (void)addCancelButton {
-    
+
     self.cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
     self.cancelButton.titleLabel.font = [UIFont systemFontOfSize:18.0f];
@@ -870,8 +869,7 @@ static NSString* toBase64(NSData* data) {
     NSLog(@"%@", url);
     NSLog(@"%@", [url absoluteString]);
     
-    UIImage *v = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    
+    UIImage* v = [UIImage imageNamed: url];
     
     if (v) {
         
@@ -901,36 +899,6 @@ static NSString* toBase64(NSData* data) {
         NSLayoutConstraint *width = [NSLayoutConstraint constraintWithItem:self.overlayImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0f constant:0.0];
         
         [self addConstraints:@[top, center, width, height]];
-    }
-}
-
-- (void)addSlider
-{
-    if (self.overlayImageView) {
-        
-        UISlider *slider = [[UISlider alloc] init];
-        
-        slider.maximumValue = 1.0f;
-        slider.minimumValue = 0.0f;
-        
-        slider.value = 0.25f;
-        
-        self.overlayImageView.alpha = slider.value;
-        
-        slider.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [self addSubview:slider];
-        
-        [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
-        
-        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:slider attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.cameraButton attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:20];
-        
-        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:slider attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:-20];
-        
-        NSLayoutConstraint *center = [NSLayoutConstraint constraintWithItem:slider attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.cameraButton attribute:NSLayoutAttributeCenterY multiplier:1.0f constant:0];
-        
-        [self addConstraints:@[leading, trailing, center]];
-        
     }
 }
 
