@@ -865,7 +865,6 @@ static NSString* toBase64(NSData* data) {
 - (void)addOverlayImageView
 {   
     NSLog(@"%@", self.url);
-    NSLog(@"%@", [self.url absoluteString]);
     
     UIImage* v = [UIImage imageNamed: self.url];
     
