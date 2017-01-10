@@ -145,8 +145,6 @@ typedef NSUInteger CDVMediaType;
 
 - (void)takePicture;
 
-- (void)sliderChanged:(UISlider*)sender;
-
 - (void)dismiss;
 
 @end
