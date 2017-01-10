@@ -35,7 +35,7 @@
 static NSSet* org_apache_cordova_validArrowDirections;
 
 static NSString* toBase64(NSData* data) {
-    return [data base64EncodedStringWithOptions:0];
+    return [data base64Encoding];
 }
 
 @implementation CDVPictureOptions
