@@ -863,13 +863,11 @@ static NSString* toBase64(NSData* data) {
 }
 
 - (void)addOverlayImageView
-{
-    NSURL *url = [NSURL URLWithString:self.url];
+{   
+    NSLog(@"%@", self.url);
+    NSLog(@"%@", [self.url absoluteString]);
     
-    NSLog(@"%@", url);
-    NSLog(@"%@", [url absoluteString]);
-    
-    UIImage* v = [UIImage imageNamed: url];
+    UIImage* v = [UIImage imageNamed: self.url];
     
     if (v) {
         
@@ -900,12 +898,6 @@ static NSString* toBase64(NSData* data) {
         
         [self addConstraints:@[top, center, width, height]];
     }
-}
-
-- (void)sliderChanged:(UISlider*)sender
-{
-    NSLog(@"Slider changed. Current value = %f", sender.value);
-    self.overlayImageView.alpha = sender.value;
 }
 
 - (void)dismiss
